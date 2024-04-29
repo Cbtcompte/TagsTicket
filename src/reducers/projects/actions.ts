@@ -1,5 +1,5 @@
-import { Projet } from "@/helpers/types";
-import { ADD_DATA_PROJET, GET_DATA_PROJET_ID, LOAD_DATA_PROJET } from "./types";
+import { Liste, Projet } from "@/helpers/types";
+import { ADD_DATA_PROJET, GET_DATA_PROJET_ID, LOAD_DATA_PROJET, GET_DATA_LISTE_TICKET_PROJET_ID } from "./types";
 
 export const loadProjetAction = (projets: Projet[]) => {
     return {
@@ -19,5 +19,12 @@ export const selectProjetAction = (projetId: number) => {
     return {
         type : GET_DATA_PROJET_ID,
         payload : projetId
+    }
+}
+
+export const loadListeTicketProjetAction = (id : number, listes : Liste[]) => {
+    return {
+        type : GET_DATA_LISTE_TICKET_PROJET_ID,
+        payload : {id : id, data : listes}
     }
 }

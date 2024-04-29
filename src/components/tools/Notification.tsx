@@ -25,7 +25,7 @@ function Notification() {
     
     const openNotification = () => {
         const type = data.codeStatus != 200 ? "error" : "success"
-        const description = data.codeStatus != 200 ? "Vérifier si les champs sont bien renseignés" : "Vos informations sont enregistrées avec success"
+        const description = data.codeStatus != 200 ? "Vérifier si les champs sont bien renseignés" : "Opération effectuée avec success"
         switch (type) {
             case 'success':
                 api.success({

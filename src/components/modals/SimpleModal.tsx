@@ -9,15 +9,11 @@ export type ModalElement = {
   isModalOpen: boolean,
   children: ReactNode,
   title: string,
-  footer: string,
+  footer: ReactNode,
   closeIcon: ReactNode,
 }
 
-interface handleFunction {
-  handleOk: () => void
-}
-
-const SimpleModal = (handle: handleFunction) => {
+const SimpleModal = () => {
 
   const element = document.getElementById('modal') as HTMLElement
 
@@ -34,9 +30,9 @@ const SimpleModal = (handle: handleFunction) => {
 
   return createPortal(
     <>
-      {storeModal.footer != null ? <Modal title={storeModal.title} open={storeModal.isModalOpen} onOk={() => handle.handleOk} onCancel={() => cancelModal()}>
+      {storeModal.footer != null ? <Modal title={storeModal.title} open={storeModal.isModalOpen} onCancel={() => cancelModal()}>
         {storeModal.children}
-      </Modal> : <Modal closeIcon={storeModal.closeIcon} footer={storeModal.footer} title={storeModal.title} open={storeModal.isModalOpen} onOk={() => handle.handleOk} onCancel={() => cancelModal()}>
+      </Modal> : <Modal closeIcon={storeModal.closeIcon} footer={storeModal.footer} title={storeModal.title} open={storeModal.isModalOpen} onCancel={() => cancelModal()}>
         {storeModal.children}
       </Modal>}
     </>, element

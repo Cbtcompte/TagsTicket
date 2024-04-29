@@ -4,15 +4,18 @@ import {
     SolutionOutlined, 
     UserOutlined, 
     UserAddOutlined, 
+    UnorderedListOutlined,
     UsergroupAddOutlined, 
     FolderOutlined, 
     TableOutlined, 
     TagsOutlined, 
+    TagOutlined, 
     PlusCircleOutlined,
     InfoCircleOutlined,
     CheckOutlined,
     CheckCircleOutlined,
     UploadOutlined,
+    DeleteOutlined,
     HomeOutlined,
     ExclamationCircleOutlined,
     EditOutlined,
@@ -43,11 +46,14 @@ const Icons = ({ name }: IconElement) => {
     listIcon.set("SolutionOutlined", <SolutionOutlined />)
     listIcon.set("TableOutlined", <TableOutlined />)
     listIcon.set("TagsOutlined", <TagsOutlined />)
+    listIcon.set("TagOutlined", <TagOutlined />)
+    listIcon.set("DeleteOutlined", <DeleteOutlined />)
     listIcon.set("PlusCircleOutlined", <PlusCircleOutlined />)
     listIcon.set("InfoCircleOutlined", <InfoCircleOutlined className='text-primary'  style={{fontSize : '20px'}}/>)
     listIcon.set("ExclamationCircleOutlined", <ExclamationCircleOutlined />)
     listIcon.set("CheckCircleOutlined", <CheckCircleOutlined />)
     listIcon.set("CheckOutlined", <CheckOutlined />)
+    listIcon.set("UnorderedListOutlined", <UnorderedListOutlined />)
     listIcon.set("EditOutlined", <EditOutlined />)
     listIcon.set("HomeOutlined", <HomeOutlined />)
     listIcon.set("CloseCircleOutlinedSimple", <CloseCircleOutlined />)

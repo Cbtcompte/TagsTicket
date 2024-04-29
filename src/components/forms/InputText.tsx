@@ -34,6 +34,7 @@ function InputText({ controlInput, type, label, initValue, value, action, name, 
                     type={type}
                     className="form-control"
                     name={name}
+                    defaultValue={value}
                     id={id}
                     placeholder={initValue}
                      />

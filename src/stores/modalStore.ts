@@ -7,7 +7,7 @@ const initialState : ModalElement = {
     title : '',
     children: null,
     footer : '',
-    closeIcon : false
+    closeIcon : false,
 }
 
 export const gettersState = (initialState : RootState) => initialState.modals

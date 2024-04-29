@@ -5,7 +5,7 @@ import './App.css'
 
 function App() {
   return <>
-    <SimpleModal handleOk={() => { }}></SimpleModal>
+    <SimpleModal></SimpleModal>
     <RouterProvider router={router} />
   </>
 }

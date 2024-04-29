@@ -2,12 +2,14 @@ import Button from "@/components/forms/Button";
 import { DateConvert } from "@/helpers/DateHelper";
 import { getOneProjet } from "@/reducers/projects/getters";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function ProjetDetails() {
     const projet = useSelector(getOneProjet)
+    const navigate = useNavigate()
 
-    const goToDashboard = () => {
-        
+    const goToDashboard = (url : string) => {
+        navigate(url)
     }
     return <>
     <div className="py-3" style={{marginLeft : '10%'}}>
@@ -21,11 +23,12 @@ function ProjetDetails() {
             </div>
         </div>
         <hr />
-        <div className="mb-3" style={{padding: '3%', overflowY: 'scroll', height: "300px", backgroundColor : 'white'}}>
+        <div className="mb-3" style={{padding: '3%', overflowY: 'scroll', height: "250px", backgroundColor : 'white', color : 'black'}}>
+            <h3>Description du projet</h3>
             <p style={{textJustify : 'auto'}}>{projet.description}</p>
         </div>
         <div className="">
-            <Button className={"btn btn-primary"} iconName={"HomeOutlined"} action={() => goToDashboard()} title={" Accéder au tableau de bord"} disable={false}></Button>
+            <Button className={"btn btn-primary"} iconName={"HomeOutlined"} action={() => goToDashboard("/dashboard/"+projet.id)} title={" Accéder au tableau de bord"} disable={false}></Button>
         </div>
     </div>
     </>

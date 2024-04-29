@@ -48,7 +48,7 @@ function ProjetView() {
         <hr style={{ borderLeft: '1px dashed black' }} />
         <Col span={15}>
             <div className='row justify-content-center align-items-center'>
-                {projetId == 0 ? showCreateProjet ? <ProjetCreate actionCreateForm={displayFormCreateProjet}></ProjetCreate> :  (<div style={{ marginTop: '10%' }}><Infos
+                {projetId == 0 || projets.length == 0 ? showCreateProjet ? <ProjetCreate actionCreateForm={displayFormCreateProjet}></ProjetCreate> :  (<div style={{ marginTop: '10%' }}><Infos
                     message="Aucun projet sélectionné. Sélectionner ou créer un projet"
                     hasButton={true}
                     icon={'InfoCircleOutlined'}

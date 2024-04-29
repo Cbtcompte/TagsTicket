@@ -11,7 +11,7 @@ export interface ButtonElement {
 
 function Button({className, iconName, action, title, disable} : ButtonElement){
     return <>
-        <button disabled={disable} className={className} onClick={action}>
+        <button type="button" disabled={disable} className={className} onClick={action}>
             {Icons({name : iconName})} {title}
         </button>
     </>

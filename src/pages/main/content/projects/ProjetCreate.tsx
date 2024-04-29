@@ -2,7 +2,7 @@ import Button from "@/components/forms/Button";
 import InputText from "@/components/forms/InputText";
 import Textarea from "@/components/forms/Textarea";
 import Notification, { handleStateSubmit } from "@/components/tools/Notification";
-import { insertProjet } from "@/helpers/services";
+import { insertData } from "@/helpers/services";
 import { Projet } from "@/helpers/types";
 import { addProjetAction } from "@/reducers/projects/actions";
 import { useRef, useState } from "react";
@@ -48,7 +48,7 @@ function ProjetCreate({ actionCreateForm }: CreateAction) {
         }
 
         handleStateButtom()
-        insertProjet(data as unknown as Projet).then((response) => {
+        insertData(data as unknown as Projet, "projet").then((response) => {
             const dataResponse = response.data
             dispacth(addProjetAction(dataResponse as Projet))
             handleStateSubmit(response)
