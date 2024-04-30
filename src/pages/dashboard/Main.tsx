@@ -12,45 +12,51 @@ import { Projet, Teams } from '@/helpers/types';
 import { getAllData } from '@/helpers/services';
 import { loadProjetAction } from '@/reducers/projects/actions';
 import Icons from '@/helpers/Icons';
+import { useSelector } from 'react-redux';
+import { getProjets } from '@/reducers/projects/getters';
+import { getTeams } from '@/reducers/teams/getters';
 
 const { Header, Sider, Content } = Layout;
 
 const MainDashboard = () => {
     const dispacth = useDispatch()
+    const projets = useSelector(getProjets)
+    const teams = useSelector(getTeams)
     const [collapsed, setCollapsed] = useState(false);
     const {
         token: { colorBgContainer, borderRadiusLG },
     } = theme.useToken();
 
     useEffect(() => {
-        getAllData("equipe").then((response) => {
+        (async () => await getAllData("equipe").then((response) => {
             dispacth(loadTeamAction(response.data as Teams[]))
-        })
 
-        dispacth({
-            type : 'modals/openModal',
-            payload : {footer: null, closeIcon : null, isModalOpen : true, title:'', children : (<p style={{fontSize : '160%', textAlign : 'center'}}><span>{Icons({name : "LoadingOutlined"})}</span> <span>{"Chargement"}</span></p>)}
-        }) 
-        getAllData("projet").then((response) => {
-            dispacth(loadProjetAction(response.data as Projet[]))
-            dispacth({
-                type : 'modals/closeModal',
-                payload :  false
-            })
-        }).catch((error) => {
             dispacth({
                 type : 'modals/openModal',
-                payload : {isModalOpen : true, title:'Error', children : (<p><span>{Icons({name : "CloseCircleOutlined"})}</span> <span>{error.message}</span></p>)}
+                payload : {footer: null, closeIcon : null, isModalOpen : true, title:'', children : (<p style={{fontSize : '160%', textAlign : 'center'}}><span>{Icons({name : "LoadingOutlined"})}</span> <span>{"Chargement"}</span></p>)}
+            }) 
+            getAllData("projet").then((response) => {
+                dispacth(loadProjetAction(response.data as Projet[]))
+                dispacth({
+                    type : 'modals/closeModal',
+                    payload :  false
+                })
+            }).catch((error) => {
+                dispacth({
+                    type : 'modals/openModal',
+                    payload : {isModalOpen : true, title:'Error', children : (<p><span>{Icons({name : "CloseCircleOutlined"})}</span> <span>{error.message}</span></p>)}
+                })
             })
-        })
+        }))();
+
+       
     }, [])
 
 
     registerLicense('Ngo9BigBOggjHTQxAR8/V1NBaF5cXmZCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdnWXtfeHRdRWdfV0xyXkE=')
 
-    return (
-        <div className=''>
-            <Layout>
+    return ( <div className=''>
+            {(projets != undefined && teams != undefined && projets.length != 0 && teams.length != 0) ?  <Layout>
                 <Sider trigger={null} collapsible collapsed={collapsed} width={250} collapsedWidth={150}>
                     <MenuView></MenuView>
                 </Sider>
@@ -69,9 +75,8 @@ const MainDashboard = () => {
                         Ant Design ©{new Date().getFullYear()} Created by Ant UED
                     </Footer>
                 </Layout>
-            </Layout>
-        </div>
-    );
+            </Layout>: <></>}
+        </div> )
 };
 
 export default MainDashboard;

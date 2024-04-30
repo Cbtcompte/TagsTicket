@@ -5,9 +5,10 @@ import { tagSlice } from './tags';
 import { teamSlice } from './teams';
 import { linkStore } from '@/stores/linkStore';
 import { userSlice } from './users';
+import { ticketSlice } from './tickets';
 
 export const store = configureStore({
-        reducer: combineSlices(projetSlice, modalStore, tagSlice, teamSlice, linkStore, userSlice)
+        reducer: combineSlices(projetSlice, modalStore, tagSlice, teamSlice, linkStore, userSlice, ticketSlice)
     }
 )
 
